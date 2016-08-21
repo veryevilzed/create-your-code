@@ -35,7 +35,7 @@ public class WebHandler {
         try {
             PebbleEngine engine = new PebbleEngine.Builder()
                     .loader(new StringLoader())
-                    .extension(new Extensions())
+                    .extension(new Extensions(map))
                     .build();
 
             val writer = new StringWriter();
