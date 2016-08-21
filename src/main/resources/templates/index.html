@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ACE in Action</title>
+    <style type="text/css" media="screen">
+        .editor {
+            min-height: 700px;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<table width="100%" >
+<thead>
+<tr><th>Template</th><th>Code</th></tr>
+</thead>
+<tbody>
+<tr>
+    <td width="60%">
+    <form method="post" target="" id="form" >
+        <textarea id="editor_code_for_send" name="editor_code_for_send" hidden="true"></textarea>
+        <div id="editor_code" class="editor">{{ code }}</div>
+        {% if error is not empty %}<div>Error:{{ error }}</div>{% endif %}
+        <button type="submit" id="send">Run</button>
+    </form>
+    </td>
+    <td>
+        <div id="editor_source" class="editor">{{ source }}</div>
+        <button>Save</button>
+    </td>
+</tr>
+</tbody>
+</table>
+
+
+<script src="/static/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script>
+    var editor_code = ace.edit("editor_code");
+    editor_code.setTheme("ace/theme/monokai");
+    editor_code.getSession().setMode("ace/mode/java");
+
+    var editor_source = ace.edit("editor_source");
+    editor_source.setTheme("ace/theme/monokai");
+    editor_source.getSession().setMode("ace/mode/java");
+
+    $("#send").click(function () {
+        $("#editor_code_for_send").val(editor_code.getSession().getValue());
+        return true;
+    });
+
+
+</script>
+</body>
+</html>
