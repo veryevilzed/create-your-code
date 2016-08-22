@@ -1,6 +1,6 @@
 
-Generate Roulette Split Arrays
-------------------------------
+Generate Roulette Arrays
+------------------------
 
 ```
 {% set className = "TestClass" %}
